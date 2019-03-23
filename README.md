@@ -31,11 +31,11 @@ The variable `training_data_range` is set to a large value (`15`).
 
 The results are shown with increasing number of training samples.
 
-![10 samples](https://i.imgur.com/NM0Gerr.png)
-![50 samples](https://i.imgur.com/9JbUXcK.png)
-![100 samples](https://i.imgur.com/pEmUJyn.png)
-![200 samples](https://i.imgur.com/r5yjsGD.png)
-![500 samples](https://i.imgur.com/J4krNnB.png)
+![10 samples](https://github.com/woctezuma/regression/wiki/img/NM0Gerr.png)
+![50 samples](https://github.com/woctezuma/regression/wiki/img/9JbUXcK.png)
+![100 samples](https://github.com/woctezuma/regression/wiki/img/pEmUJyn.png)
+![200 samples](https://github.com/woctezuma/regression/wiki/img/r5yjsGD.png)
+![500 samples](https://github.com/woctezuma/regression/wiki/img/J4krNnB.png)
 
 ### Influence of the noise level
 
@@ -44,10 +44,10 @@ The variable `training_data_range` is set to a large value (`15`).
 
 The results are shown with increasing noise level.
 
-![noise 0.0](https://i.imgur.com/lq63j83.png)
-![noise 0.1](https://i.imgur.com/aw7O2KS.png)
-![noise 0.5](https://i.imgur.com/d9dknjW.png)
-![noise 1.0](https://i.imgur.com/dFyDuDE.png)
+![noise 0.0](https://github.com/woctezuma/regression/wiki/img/lq63j83.png)
+![noise 0.1](https://github.com/woctezuma/regression/wiki/img/aw7O2KS.png)
+![noise 0.5](https://github.com/woctezuma/regression/wiki/img/d9dknjW.png)
+![noise 1.0](https://github.com/woctezuma/regression/wiki/img/dFyDuDE.png)
 
 ### Influence of range of training data
 
@@ -56,11 +56,11 @@ The variable `noise_level` is set to `0.1`.
 
 The results are shown with increasing range of training data
 
-![range 1](https://i.imgur.com/7OyCgMI.png)
-![range 2](https://i.imgur.com/az6BP26.png)
-![range 5](https://i.imgur.com/fLn9jmF.png)
-![range 10](https://i.imgur.com/7tCFWFZ.png)
-![range 15](https://i.imgur.com/ugN0nQi.png)
+![range 1](https://github.com/woctezuma/regression/wiki/img/7OyCgMI.png)
+![range 2](https://github.com/woctezuma/regression/wiki/img/az6BP26.png)
+![range 5](https://github.com/woctezuma/regression/wiki/img/fLn9jmF.png)
+![range 10](https://github.com/woctezuma/regression/wiki/img/7tCFWFZ.png)
+![range 15](https://github.com/woctezuma/regression/wiki/img/ugN0nQi.png)
 
 ## References
 
