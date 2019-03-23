@@ -1,6 +1,8 @@
 # Regression
 
-This repository contains Python code to play with 1-D regression with [Gaussian Process Regression](https://en.wikipedia.org/wiki/Kriging) and [Relevance Vector Machine](https://en.wikipedia.org/wiki/Relevance_vector_machine).
+This repository contains Python code to perform 1-D regression with:
+-   [Gaussian Process Regression](https://en.wikipedia.org/wiki/Kriging),
+-   [Relevance Vector Machine](https://en.wikipedia.org/wiki/Relevance_vector_machine).
 
 ## Requirements
 
