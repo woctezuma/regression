@@ -67,3 +67,5 @@ The results are shown with increasing range of training data
 -   Python module [scikit-learn](https://github.com/scikit-learn/scikit-learn)
 -   Documentation: [Gaussian Process](https://scikit-learn.org/stable/modules/gaussian_process.html) with scikit-learn
 -   Python module [scikit-rvm](https://github.com/JamesRitchie/scikit-rvm)
+-   Slides about [Relevance Vector Regression](http://lasa.epfl.ch/teaching/lectures/ML_MSc_Advanced/Slides/Lec_IX_NonlinearRegression_Part_I.pdf)
+-   Slides about [Gaussian Process Regression](http://lasa.epfl.ch/teaching/lectures/ML_MSc_Advanced/Slides/Lec_IX_NonlinearRegression_Part_II.pdf)
