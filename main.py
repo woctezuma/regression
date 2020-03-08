@@ -84,24 +84,28 @@ def plot_results(X,
                  y_rvr_std=None,
                  y_gpr_std=None,
                  noise_level=None,
-                 training_data_range=None):
+                 training_data_range=None,
+                 ax=None):
     plot_params = get_plot_params()
 
+    show_immediately = bool(ax is None)
+
     # Plot results
-    plt.figure(figsize=(15, 7))
+    if show_immediately:
+        fig, ax = plt.subplots(1, 1, figsize=(15, 7))
     lw = 2
 
-    plt.scatter(X, y, c='k', alpha=0.1, label='data')
+    ax.scatter(X, y, c='k', alpha=0.1, label='data')
 
-    plt.plot(X_plot, np.sinc(X_plot), color='darkgreen', lw=lw, label='True')
+    ax.plot(X_plot, np.sinc(X_plot), color='darkgreen', lw=lw, label='True')
 
     label_text = '{} ({})'.format(
         rvr_name,
         rvr.kernel
     )
-    plt.plot(X_plot, y_rvr, color='navy', lw=lw, label=label_text)
+    ax.plot(X_plot, y_rvr, color='navy', lw=lw, label=label_text)
     if y_rvr_std is not None:
-        plt.fill_between(X_plot[:, 0], y_rvr - y_rvr_std, y_rvr + y_rvr_std, color='navy', alpha=0.2)
+        ax.fill_between(X_plot[:, 0], y_rvr - y_rvr_std, y_rvr + y_rvr_std, color='navy', alpha=0.2)
 
     plot_relevant_vectors(X,
                           y,
@@ -114,9 +118,9 @@ def plot_results(X,
         gpr_name,
         gpr.kernel
     )
-    plt.plot(X_plot, y_gpr, color='darkorange', lw=lw, label=label_text)
+    ax.plot(X_plot, y_gpr, color='darkorange', lw=lw, label=label_text)
     if y_gpr_std is not None:
-        plt.fill_between(X_plot[:, 0], y_gpr - y_gpr_std, y_gpr + y_gpr_std, color='darkorange', alpha=0.2)
+        ax.fill_between(X_plot[:, 0], y_gpr - y_gpr_std, y_gpr + y_gpr_std, color='darkorange', alpha=0.2)
 
     # Circle size is different, so that we can see concentric circles if the relevant vectors are used by both models.
     plot_relevant_vectors(X,
@@ -128,10 +132,10 @@ def plot_results(X,
 
     num_samples = len(y)
 
-    plt.xlabel('data')
-    plt.ylabel('target')
-    plt.xlim(plot_params['x_low'], plot_params['x_high'])
-    plt.ylim(plot_params['y_low'], plot_params['y_high'])
+    ax.set_xlabel('data')
+    ax.set_ylabel('target')
+    ax.set_xlim(plot_params['x_low'], plot_params['x_high'])
+    ax.set_ylim(plot_params['y_low'], plot_params['y_high'])
     if noise_level is None:
         if training_data_range is None:
             parenthesis_text = '{}={}'.format(
@@ -153,9 +157,10 @@ def plot_results(X,
         rvr_name,
         parenthesis_text,
     )
-    plt.title(title)
-    plt.legend(loc="best", scatterpoints=1, prop={'size': 8})
-    plt.show()
+    ax.set_title(title)
+    ax.legend(loc="best", scatterpoints=1, prop={'size': 8})
+    if show_immediately:
+        plt.show()
 
     return
 
