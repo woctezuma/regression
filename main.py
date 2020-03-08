@@ -132,7 +132,7 @@ def benchmark():
     # generating the variance of the predictive distribution takes considerably longer than just predicting the mean.
     # Reference:
     # https://scikit-learn.org/stable/auto_examples/gaussian_process/plot_compare_gpr_krr.html
-    y_gpr, y_std = gpr.predict(X_plot, return_std=True)
+    y_gpr, y_gpr_std = gpr.predict(X_plot, return_std=True)
 
     y_rvr = rvr.predict(X_plot)
 
