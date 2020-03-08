@@ -140,7 +140,8 @@ def plot_results(X,
 
     num_samples = len(y)
 
-    ax.set_xlabel('data')
+    if show_immediately:
+        ax.set_xlabel('data')
     ax.set_ylabel('target')
     ax.set_xlim(plot_params['x_low'], plot_params['x_high'])
     ax.set_ylim(plot_params['y_low'], plot_params['y_high'])
