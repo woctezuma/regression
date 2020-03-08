@@ -117,7 +117,8 @@ def benchmark():
     gpr = GaussianProcessRegressor(kernel=RBF() + WhiteKernel())
     gpr.fit(X, y)
 
-    rvr = RVR()
+    ## Implementation of RVR by skrvm
+    rvr = RVR(kernel='rbf')
     rvr.fit(X, y)
 
     ## Implementation of RVR by sklearn_rvm
