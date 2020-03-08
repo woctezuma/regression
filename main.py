@@ -123,7 +123,7 @@ def benchmark():
 
     ## Implementation of RVR by sklearn_rvm
     emrvr = EMRVR(kernel='rbf',
-                  gamma='scale')
+                  gamma='auto')
     emrvr.fit(X, y)
 
     # Predict
