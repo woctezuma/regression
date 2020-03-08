@@ -36,7 +36,8 @@ def plot_relevant_vectors(X,
                           model,
                           model_name='RVR',
                           circle_size=80,
-                          edgecolors='navy'):
+                          edgecolors='navy',
+                          ax=None):
     try:
         # For any of the two implementations of RVR:
         model_relevance = model.relevance_
@@ -62,7 +63,12 @@ def plot_relevant_vectors(X,
             ]
             y_relevant = y[relevance_vectors_idx]
 
-        plt.scatter(X_relevant,
+        if ax is None:
+            scatter_fun = plt.scatter
+        else:
+            scatter_fun = ax.scatter
+
+        scatter_fun(X_relevant,
                     y_relevant,
                     s=circle_size,
                     facecolors="none",
@@ -112,7 +118,8 @@ def plot_results(X,
                           model=rvr,
                           model_name=rvr_name,
                           circle_size=80,
-                          edgecolors='navy')
+                          edgecolors='navy',
+                          ax=ax)
 
     label_text = '{} ({})'.format(
         gpr_name,
@@ -128,7 +135,8 @@ def plot_results(X,
                           model=gpr,
                           model_name=gpr_name,
                           circle_size=50,
-                          edgecolors='red')
+                          edgecolors='red',
+                          ax=ax)
 
     num_samples = len(y)
 
