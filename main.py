@@ -13,6 +13,7 @@ def generate_training_data(num_samples, noise_level, training_data_range):
     X = training_data_range * (0.5 - rng.rand(num_samples, 1))
     y = np.sinc(X).ravel()
     # Add noise
+    # noinspection PyArgumentList
     y += noise_level * 2 * (0.5 - rng.rand(X.shape[0]))
 
     return X, y
