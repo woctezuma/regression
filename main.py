@@ -30,7 +30,19 @@ def get_plot_params():
     return plot_params
 
 
-def plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr, y_std=None, noise_level=None, training_data_range=None):
+def plot_results(X,
+                 y,
+                 rvr,
+                 gpr,
+                 X_plot,
+                 y_rvr,
+                 y_gpr,
+                 rvr_name='RVR',
+                 gpr_name='GPR',
+                 y_rvr_std=None,
+                 y_gpr_std=None,
+                 noise_level=None,
+                 training_data_range=None):
     plot_params = get_plot_params()
 
     # Plot results
@@ -41,11 +53,21 @@ def plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr, y_std=None, noise_level=N
 
     plt.plot(X_plot, np.sinc(X_plot), color='darkgreen', lw=lw, label='True')
 
-    plt.plot(X_plot, y_rvr, color='navy', lw=lw, label='RVR (%s)' % rvr.kernel)
+    label_text = '{} ({})'.format(
+        rvr_name,
+        rvr.kernel
+    )
+    plt.plot(X_plot, y_rvr, color='navy', lw=lw, label=label_text)
+    if y_rvr_std is not None:
+        plt.fill_between(X_plot[:, 0], y_rvr - y_rvr_std, y_rvr + y_rvr_std, color='navy', alpha=0.2)
 
-    plt.plot(X_plot, y_gpr, color='darkorange', lw=lw, label='GPR (%s)' % gpr.kernel_)
-    if y_std is not None:
-        plt.fill_between(X_plot[:, 0], y_gpr - y_std, y_gpr + y_std, color='darkorange', alpha=0.2)
+    label_text = '{} ({})'.format(
+        gpr_name,
+        gpr.kernel
+    )
+    plt.plot(X_plot, y_gpr, color='darkorange', lw=lw, label=label_text)
+    if y_gpr_std is not None:
+        plt.fill_between(X_plot[:, 0], y_gpr - y_gpr_std, y_gpr + y_gpr_std, color='darkorange', alpha=0.2)
 
     num_samples = len(y)
 
@@ -55,11 +77,26 @@ def plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr, y_std=None, noise_level=N
     plt.ylim(plot_params['y_low'], plot_params['y_high'])
     if noise_level is None:
         if training_data_range is None:
-            plt.title('GPR vs. RVR (#training_samples={})'.format(num_samples))
+            parenthesis_text = '{}={}'.format(
+                '#training_samples',
+                num_samples
+            )
         else:
-            plt.title('GPR vs. RVR (#training_range={})'.format(training_data_range))
+            parenthesis_text = '{}={}'.format(
+                '#training_range',
+                training_data_range
+            )
     else:
-        plt.title('GPR vs. RVR (noise_level={:.2})'.format(noise_level))
+        parenthesis_text = '{}={:.2}'.format(
+            'noise_level',
+            noise_level
+        )
+    title = '{} vs. {} ({})'.format(
+        gpr_name,
+        rvr_name,
+        parenthesis_text,
+    )
+    plt.title(title)
     plt.legend(loc="best", scatterpoints=1, prop={'size': 8})
     plt.show()
 
