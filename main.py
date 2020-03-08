@@ -134,7 +134,9 @@ def benchmark():
     # https://scikit-learn.org/stable/auto_examples/gaussian_process/plot_compare_gpr_krr.html
     y_gpr, y_gpr_std = gpr.predict(X_plot, return_std=True)
 
+    ## Implementation of RVR by skrvm
     y_rvr = rvr.predict(X_plot)
+    y_rvr_std = None
 
     ## Implementation of RVR by sklearn_rvm
     y_emrvr, y_emrvr_std = emrvr.predict(X_plot, return_std=True)
