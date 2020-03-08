@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, WhiteKernel
+from sklearn.gaussian_process.kernels import RBF
+from sklearn_rvm import EMRVR
 from skrvm import RVR
 
 
@@ -81,6 +82,11 @@ def benchmark():
     rvr = RVR()
     rvr.fit(X, y)
 
+    ## Implementation of RVR by sklearn_rvm
+    emrvr = EMRVR(kernel='rbf',
+                  gamma='scale')
+    emrvr.fit(X, y)
+
     # Predict
     plot_params = get_plot_params()
     X_plot = np.linspace(plot_params['x_low'], plot_params['x_high'], 10000)[:, None]
@@ -92,6 +98,9 @@ def benchmark():
     y_gpr, y_std = gpr.predict(X_plot, return_std=True)
 
     y_rvr = rvr.predict(X_plot)
+
+    ## Implementation of RVR by sklearn_rvm
+    y_emrvr, y_emrvr_std = emrvr.predict(X_plot, return_std=True)
 
     # Plot
     plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr, y_std, training_data_range=training_data_range)
