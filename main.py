@@ -31,6 +31,47 @@ def get_plot_params():
     return plot_params
 
 
+def plot_relevant_vectors(X,
+                          y,
+                          model,
+                          model_name='RVR',
+                          circle_size=80,
+                          edgecolors='navy'):
+    try:
+        # For any of the two implementations of RVR:
+        model_relevance = model.relevance_
+        # Caveat:
+        # - for sklearn_rvm, these are indices of the relevant vectors
+        # - for skrvm, these are actually abscissa of relevant vectors!
+    except AttributeError:
+        # GPR has no relevance vector:
+        model_relevance = None
+
+    if model_relevance is not None:
+        try:
+            # Implementation of RVR by sklearn_rvm
+            relevance_vectors_idx = model_relevance
+            X_relevant = X[relevance_vectors_idx]
+            y_relevant = y[relevance_vectors_idx]
+        except IndexError:
+            # Implementation of RVR by skrvm: model.relevance_ is not the indices of relevant vectors, so we fix it now!
+            X_relevant = model_relevance
+            relevance_vectors_idx = [
+                i for i in range(X.shape[0])
+                if X[i] in X_relevant
+            ]
+            y_relevant = y[relevance_vectors_idx]
+
+        plt.scatter(X_relevant,
+                    y_relevant,
+                    s=circle_size,
+                    facecolors="none",
+                    edgecolors=edgecolors,
+                    label="relevance vectors ({})".format(model_name))
+
+    return
+
+
 def plot_results(X,
                  y,
                  rvr,
@@ -62,6 +103,13 @@ def plot_results(X,
     if y_rvr_std is not None:
         plt.fill_between(X_plot[:, 0], y_rvr - y_rvr_std, y_rvr + y_rvr_std, color='navy', alpha=0.2)
 
+    plot_relevant_vectors(X,
+                          y,
+                          model=rvr,
+                          model_name=rvr_name,
+                          circle_size=80,
+                          edgecolors='navy')
+
     label_text = '{} ({})'.format(
         gpr_name,
         gpr.kernel
@@ -69,6 +117,14 @@ def plot_results(X,
     plt.plot(X_plot, y_gpr, color='darkorange', lw=lw, label=label_text)
     if y_gpr_std is not None:
         plt.fill_between(X_plot[:, 0], y_gpr - y_gpr_std, y_gpr + y_gpr_std, color='darkorange', alpha=0.2)
+
+    # Circle size is different, so that we can see concentric circles if the relevant vectors are used by both models.
+    plot_relevant_vectors(X,
+                          y,
+                          model=gpr,
+                          model_name=gpr_name,
+                          circle_size=50,
+                          edgecolors='red')
 
     num_samples = len(y)
 
