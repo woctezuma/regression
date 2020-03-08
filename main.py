@@ -178,6 +178,8 @@ def benchmark():
     rvr.fit(X, y)
 
     ## Implementation of RVR by sklearn_rvm
+    # Caveat: Since sklearn v.0.22, the default value of gamma changed from ‘auto’ to ‘scale’.
+    # Reference: https://github.com/Mind-the-Pineapple/sklearn-rvm/issues/9
     emrvr = EMRVR(kernel='rbf',
                   gamma='auto')
     emrvr.fit(X, y)
