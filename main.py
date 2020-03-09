@@ -89,6 +89,9 @@ def plot_results(X,
                  gpr_name='GPR',
                  y_rvr_std=None,
                  y_gpr_std=None,
+                 rvr_color='navy',
+                 gpr_color='darkorange',
+                 ground_truth_color='darkgreen',
                  noise_level=None,
                  training_data_range=None,
                  ax=None):
@@ -103,31 +106,31 @@ def plot_results(X,
 
     ax.scatter(X, y, c='k', alpha=0.1, label='data')
 
-    ax.plot(X_plot, np.sinc(X_plot), color='darkgreen', lw=lw, label='True')
+    ax.plot(X_plot, np.sinc(X_plot), color=ground_truth_color, lw=lw, label='True')
 
     label_text = '{} ({})'.format(
         rvr_name,
         rvr.kernel
     )
-    ax.plot(X_plot, y_rvr, color='navy', lw=lw, label=label_text)
+    ax.plot(X_plot, y_rvr, color=rvr_color, lw=lw, label=label_text)
     if y_rvr_std is not None:
-        ax.fill_between(X_plot[:, 0], y_rvr - y_rvr_std, y_rvr + y_rvr_std, color='navy', alpha=0.2)
+        ax.fill_between(X_plot[:, 0], y_rvr - y_rvr_std, y_rvr + y_rvr_std, color=rvr_color, alpha=0.2)
 
     plot_relevant_vectors(X,
                           y,
                           model=rvr,
                           model_name=rvr_name,
                           circle_size=80,
-                          edgecolors='navy',
+                          edgecolors=rvr_color,
                           ax=ax)
 
     label_text = '{} ({})'.format(
         gpr_name,
         gpr.kernel
     )
-    ax.plot(X_plot, y_gpr, color='darkorange', lw=lw, label=label_text)
+    ax.plot(X_plot, y_gpr, color=gpr_color, lw=lw, label=label_text)
     if y_gpr_std is not None:
-        ax.fill_between(X_plot[:, 0], y_gpr - y_gpr_std, y_gpr + y_gpr_std, color='darkorange', alpha=0.2)
+        ax.fill_between(X_plot[:, 0], y_gpr - y_gpr_std, y_gpr + y_gpr_std, color=gpr_color, alpha=0.2)
 
     # Circle size is different, so that we can see concentric circles if the relevant vectors are used by both models.
     plot_relevant_vectors(X,
@@ -135,7 +138,7 @@ def plot_results(X,
                           model=gpr,
                           model_name=gpr_name,
                           circle_size=50,
-                          edgecolors='red',
+                          edgecolors=gpr_color,
                           ax=ax)
 
     num_samples = len(y)
