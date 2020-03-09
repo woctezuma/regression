@@ -224,9 +224,9 @@ def benchmark():
     # Plot
     fig, axs = plt.subplots(num_figures, 1, figsize=(15, 7))
 
-    plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr,
-                 "skrvm", "GPR", y_rvr_std, y_gpr_std,
-                 rvr_color='purple', gpr_color='darkorange',
+    plot_results(X, y, emrvr, gpr, X_plot, y_emrvr, y_gpr,
+                 "sklearn_rvm", "GPR", y_emrvr_std, y_gpr_std,
+                 rvr_color='navy', gpr_color='darkorange',
                  training_data_range=training_data_range,
                  ax=axs[0])
 
@@ -238,9 +238,9 @@ def benchmark():
                      ax=axs[1])
 
     if len(axs) > 2:
-        plot_results(X, y, emrvr, gpr, X_plot, y_emrvr, y_gpr,
-                     "sklearn_rvm", "GPR", y_emrvr_std, y_gpr_std,
-                     rvr_color='navy', gpr_color='darkorange',
+        plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr,
+                     "skrvm", "GPR", y_rvr_std, y_gpr_std,
+                     rvr_color='purple', gpr_color='darkorange',
                      training_data_range=training_data_range,
                      ax=axs[2])
 
