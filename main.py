@@ -178,7 +178,7 @@ def plot_results(X,
 
 
 def benchmark():
-    # Any integer value between 1 and 3:
+    # Any integer value between 1 and 3 to select the number of subplots to show:
     num_figures = 2
 
     # Parameters to generate training data
