@@ -179,7 +179,7 @@ def plot_results(X,
 
 def benchmark():
     # Any integer value between 1 and 3:
-    num_figures = 3
+    num_figures = 2
 
     # Parameters to generate training data
     num_samples = 100
