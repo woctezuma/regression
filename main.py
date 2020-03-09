@@ -162,8 +162,8 @@ def plot_results(X,
             noise_level
         )
     title = '{} vs. {} ({})'.format(
-        gpr_name,
         rvr_name,
+        gpr_name,
         parenthesis_text,
     )
     ax.set_title(title)
