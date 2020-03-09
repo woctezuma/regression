@@ -224,6 +224,16 @@ def benchmark():
     # Plot
     fig, axs = plt.subplots(num_figures, 1, figsize=(15, 7))
 
+    try:
+        # In case there are stricly more than 1 subplot, there is no issue.
+        num_sub_plots = len(axs)
+    except TypeError:
+        # In case there is exactly 1 subplot, we have to ensure that axs is a list, for code compatibility.
+        axs = [axs]
+        num_sub_plots = len(axs)
+
+    print('Plotting {} subplots.'.format(num_sub_plots))
+
     plot_results(X, y, emrvr, gpr, X_plot, y_emrvr, y_gpr,
                  "sklearn_rvm", "GPR", y_emrvr_std, y_gpr_std,
                  rvr_color='navy', gpr_color='darkorange',
