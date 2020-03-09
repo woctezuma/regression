@@ -224,16 +224,19 @@ def benchmark():
 
     plot_results(X, y, emrvr, rvr, X_plot, y_emrvr, y_rvr,
                  "sklearn_rvm", "skrvm", y_emrvr_std, y_rvr_std,
+                 rvr_color='navy', gpr_color='purple',
                  training_data_range=training_data_range,
                  ax=axs[0])
 
     plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr,
                  "skrvm", "GPR", y_rvr_std, y_gpr_std,
+                 rvr_color='purple', gpr_color='darkorange',
                  training_data_range=training_data_range,
                  ax=axs[1])
 
     plot_results(X, y, emrvr, gpr, X_plot, y_emrvr, y_gpr,
                  "sklearn_rvm", "GPR", y_emrvr_std, y_gpr_std,
+                 rvr_color='navy', gpr_color='darkorange',
                  training_data_range=training_data_range,
                  ax=axs[2])
 
