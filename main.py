@@ -219,8 +219,8 @@ def benchmark():
     num_figures = 3
     fig, axs = plt.subplots(num_figures, 1, figsize=(15, 7))
 
-    plot_results(X, y, rvr, emrvr, X_plot, y_rvr, y_emrvr,
-                 "skrvm", "sklearn_rvm", y_rvr_std, y_emrvr_std,
+    plot_results(X, y, emrvr, rvr, X_plot, y_emrvr, y_rvr,
+                 "sklearn_rvm", "skrvm", y_emrvr_std, y_rvr_std,
                  training_data_range=training_data_range,
                  ax=axs[0])
 
