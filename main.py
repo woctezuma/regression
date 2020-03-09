@@ -178,6 +178,9 @@ def plot_results(X,
 
 
 def benchmark():
+    # Any integer value between 1 and 3:
+    num_figures = 3
+
     # Parameters to generate training data
     num_samples = 100
     noise_level = 0.1
@@ -219,7 +222,6 @@ def benchmark():
     y_emrvr, y_emrvr_std = emrvr.predict(X_plot, return_std=True)
 
     # Plot
-    num_figures = 3
     fig, axs = plt.subplots(num_figures, 1, figsize=(15, 7))
 
     plot_results(X, y, rvr, gpr, X_plot, y_rvr, y_gpr,
@@ -228,17 +230,19 @@ def benchmark():
                  training_data_range=training_data_range,
                  ax=axs[0])
 
-    plot_results(X, y, emrvr, rvr, X_plot, y_emrvr, y_rvr,
-                 "sklearn_rvm", "skrvm", y_emrvr_std, y_rvr_std,
-                 rvr_color='navy', gpr_color='purple',
-                 training_data_range=training_data_range,
-                 ax=axs[1])
+    if len(axs) > 1:
+        plot_results(X, y, emrvr, rvr, X_plot, y_emrvr, y_rvr,
+                     "sklearn_rvm", "skrvm", y_emrvr_std, y_rvr_std,
+                     rvr_color='navy', gpr_color='purple',
+                     training_data_range=training_data_range,
+                     ax=axs[1])
 
-    plot_results(X, y, emrvr, gpr, X_plot, y_emrvr, y_gpr,
-                 "sklearn_rvm", "GPR", y_emrvr_std, y_gpr_std,
-                 rvr_color='navy', gpr_color='darkorange',
-                 training_data_range=training_data_range,
-                 ax=axs[2])
+    if len(axs) > 2:
+        plot_results(X, y, emrvr, gpr, X_plot, y_emrvr, y_gpr,
+                     "sklearn_rvm", "GPR", y_emrvr_std, y_gpr_std,
+                     rvr_color='navy', gpr_color='darkorange',
+                     training_data_range=training_data_range,
+                     ax=axs[2])
 
     plt.show()
 
