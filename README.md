@@ -2,7 +2,6 @@
 
 [![Updates][dependency-image]][pyup]
 [![Python 3][python3-image]][pyup]
-
 [![Code Quality][codacy-image]][codacy]
 
 This repository contains Python code to perform 1-D regression with:
@@ -78,9 +77,9 @@ The results are shown with increasing range of training data
 
 <!-- Definitions -->
 
-[pyup]: <https://pyup.io/repos/github/woctezuma/steam-market/>
-[dependency-image]: <https://pyup.io/repos/github/woctezuma/steam-market/shield.svg>
-[python3-image]: <https://pyup.io/repos/github/woctezuma/steam-market/python-3-shield.svg>
+[pyup]: <https://pyup.io/repos/github/woctezuma/regression/>
+[dependency-image]: <https://pyup.io/repos/github/woctezuma/regression/shield.svg>
+[python3-image]: <https://pyup.io/repos/github/woctezuma/regression/python-3-shield.svg>
 
-[codacy]: <https://www.codacy.com/app/woctezuma/steam-market>
+[codacy]: <https://www.codacy.com/app/woctezuma/regression>
 [codacy-image]: <https://api.codacy.com/project/badge/Grade/9b1dad26ffe64ca98fec83ec1ab69c0e>
