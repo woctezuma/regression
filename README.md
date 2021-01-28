@@ -1,5 +1,10 @@
 # Regression
 
+[![Updates][dependency-image]][pyup]
+[![Python 3][python3-image]][pyup]
+
+[![Code Quality][codacy-image]][codacy]
+
 This repository contains Python code to perform 1-D regression with:
 -   [Gaussian Process Regression](https://en.wikipedia.org/wiki/Kriging),
 -   [Relevance Vector Machine](https://en.wikipedia.org/wiki/Relevance_vector_machine).
@@ -70,3 +75,12 @@ The results are shown with increasing range of training data
 -   Python module [sklearn-rvm](https://github.com/Mind-the-Pineapple/sklearn-rvm)
 -   Slides about [Relevance Vector Regression](http://lasa.epfl.ch/teaching/lectures/ML_MSc_Advanced/Slides/Lec_IX_NonlinearRegression_Part_I.pdf)
 -   Slides about [Gaussian Process Regression](http://lasa.epfl.ch/teaching/lectures/ML_MSc_Advanced/Slides/Lec_IX_NonlinearRegression_Part_II.pdf)
+
+<!-- Definitions -->
+
+[pyup]: <https://pyup.io/repos/github/woctezuma/steam-market/>
+[dependency-image]: <https://pyup.io/repos/github/woctezuma/steam-market/shield.svg>
+[python3-image]: <https://pyup.io/repos/github/woctezuma/steam-market/python-3-shield.svg>
+
+[codacy]: <https://www.codacy.com/app/woctezuma/steam-market>
+[codacy-image]: <https://api.codacy.com/project/badge/Grade/9b1dad26ffe64ca98fec83ec1ab69c0e>
