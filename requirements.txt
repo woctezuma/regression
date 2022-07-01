@@ -1,4 +1,4 @@
-numpy==1.18.1
+numpy==1.23.0
 scipy==1.4.1
 scikit-learn==0.22.2.post1
 sklearn-rvm==0.1
